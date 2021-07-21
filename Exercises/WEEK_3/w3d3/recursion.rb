@@ -184,6 +184,67 @@ end
 
 # end
 
-def subsets
+def subsets(arr)
+    return [[]] if arr.empty?
+    return [ [], arr] if arr.length == 1
 
+    subs = subsets(arr.take(arr.length - 1)) # we recursively call subsets, but with an array that is now without its last element, so we're going to have arrays of varying lengths
+    subs += subs.map { |sub| sub + [arr.last] } # here's we act of every element in subs (each element is an array), then we add the last element back
 end
+
+# p subsets([]) # => [[]]
+# p subsets([1]) # => [[], [1]]
+# p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
+                # [1, 2]
+                # calls subsets on arr(1) # --> [1]
+                # calls subsets on arr(0) # base case --> [[]]
+
+                # now, subs is [ [], [1] ]
+                # Then, we concat/+= with subs.map where we add arr.last (which is 2)    [ [], [1] ] --> [ ([]+ [2]), ([1] +[2]) ]
+                # [ [], [1] ] + [ ([]+ [2]), ([1] +[2]) ] =  [[], [1], [2], [1, 2]]
+
+# p subsets([1, 2, 3])
+# => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+    # [ [] [1,2,3]]
+    # [ [] +  
+
+    # [1,2]
+    # arr.take(one less)
+    # [1] == arr.length, so hit our base case
+
+def permutations(arr)
+    # will have to iterate
+    # will have logic similar to subsets
+
+    # [1], hits base case and we're done
+
+    return [arr] if arr.length <= 1
+
+    result = []
+    last_ele = arr.pop
+    sub_perms = permutations(arr)
+
+    sub_perms.each do |sub|
+        (0..sub.length) do |i| # index will vary, we to include sub.length as an index, otherwise we will never be able to shove into the last/back spot
+            result << sub[0...i] + [last_ele] + sub[i..-1]
+                        # since the i will vary as we iterate through, ^^ will shift the last_ele around
+        end
+    end
+
+    result
+end
+
+p permutations([1, 2, 3]) # => [[1, 2, 3], [1, 3, 2],
+                        #     [2, 1, 3], [2, 3, 1],
+                        #     [3, 1, 2], [3, 2, 1]]
+
+                            # So, what we're really doing is getting 1,2 and putting 3 in every index before, after, and in the middle on 1 and 2
+                            # 123 132 321                              
+                            # _1_2_
+                            #     ^3
+                            # _1_2_
+                            #   ^3
+                            # _1_2_
+                            # ^3
+                              
+        
