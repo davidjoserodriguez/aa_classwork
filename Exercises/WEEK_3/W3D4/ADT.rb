@@ -5,16 +5,16 @@ class Stack
     end
     
     def push(el)
-        array.push(el)
+        self.array.push(el)
         el
     end
 
     def pop
-        array.pop
+        self.array.pop
     end
 
     def peek
-        array.last
+        self.array.last
     end
     
 end
