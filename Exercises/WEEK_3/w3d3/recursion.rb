@@ -90,7 +90,7 @@ end
 # merge sort - for unsorted/sorted arrays
 
 def bsearch(array, target)
-    return nil if arr.length < 1
+    return nil if arr.empty?
 
     mid_idx = array.length / 2
     lower_half = array[0...mid_idx] 
