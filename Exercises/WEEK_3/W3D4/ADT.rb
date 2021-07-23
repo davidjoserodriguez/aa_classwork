@@ -5,7 +5,7 @@ class Stack
     end
     
     def push(el)
-        self.array.push(el)
+        array.push(el)
         el
     end
 
@@ -48,6 +48,16 @@ class Queue
 
 end
 
+class Node
+
+    attr_reader :value, children
+
+    def initialize(value, children=[])
+        @value = value
+        @children = children
+    end
+
+end
 class Map
     def initialize
         @pairs = []
