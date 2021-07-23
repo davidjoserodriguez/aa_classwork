@@ -10,11 +10,19 @@ class Stack
     end
 
     def pop
-        self.array.pop
+        array.pop
     end
 
     def peek
-        self.array.last
+        array.last
+    end
+
+    def size
+        array.length
+    end
+
+    def empty?
+        array.emtpy?
     end
     
 end
