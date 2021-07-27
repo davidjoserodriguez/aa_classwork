@@ -5,13 +5,21 @@ class Employee
         @title = title
         @salary = salary
         @boss = boss
+        if self.boss != nil
+            boss.assigned_employees << self
+        end
     end
+
+    def boss=(newBoss)
+        self.boss = newBoss
+    end
+
 
     def bonus(multiplier)
         bonus = self.salary * multiplier
-        bonus 
+        bonus
     end
-    
+
 end
 
 class Manager < Employee
@@ -21,11 +29,17 @@ class Manager < Employee
         super
         @assigned_employees = []
     end
-    
+
     def bonus(multiplier)
         total_salary = 0
         assigned_employees.each do |employee|
-            total_salary += employee.salary 
+            if !employee.assigned_employees.empty?
+                employee.assigned_employees.each do |subEmployee|
+                    total_salary += subemployee.salary
+                end
+            else
+            total_salary += employee.salary
+            end
         end
         bonus = total_salary * multiplier
     end
