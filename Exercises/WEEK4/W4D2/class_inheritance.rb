@@ -1,3 +1,4 @@
+require "byebug"
 class Employee
     attr_reader :name, :title, :salary, :boss
     def initialize(name, title, salary, boss)
@@ -35,10 +36,20 @@ class Manager < Employee
         total_salary = 0
         queue = [self]
         until queue.empty?
+            # debugger
+            # p total_salary
             el = queue.shift
-            total_salary += el.salary
-            queue.concat(el.assigned_employees)
+            if el != self
+                total_salary += el.salary
+            end
+            if el.is_a?(Manager)
+                el.assigned_employees.each do |employee|
+                    queue << employee
+                # total_salary += el.salar
+                end
+            end
         end
+
         return total_salary * multiplier
     end
 end
@@ -47,4 +58,4 @@ ned = Manager.new("Ned", "Founder", 1000000, nil)
 darren = Manager.new("Darren", "TA Manager", 78000, ned)
 david = Employee.new("David", "TA", 10000, darren)
 shawna = Employee.new("Shawna", "TA", 12000, darren)
-p darren.bonus(5)
+p ned.bonus(5)
