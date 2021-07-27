@@ -12,6 +12,7 @@ class Employee
 
     def boss=(newBoss)
         self.boss = newBoss
+        # newBoss.assigned_employees = self.assigned_employees
     end
 
 
@@ -32,15 +33,18 @@ class Manager < Employee
 
     def bonus(multiplier)
         total_salary = 0
-        assigned_employees.each do |employee|
-            if !employee.assigned_employees.empty?
-                employee.assigned_employees.each do |subEmployee|
-                    total_salary += subemployee.salary
-                end
-            else
-            total_salary += employee.salary
-            end
+        queue = [self]
+        until queue.empty?
+            el = queue.shift
+            total_salary += el.salary
+            queue.concat(el.assigned_employees)
         end
-        bonus = total_salary * multiplier
+        return total_salary * multiplier
     end
 end
+
+ned = Manager.new("Ned", "Founder", 1000000, nil)
+darren = Manager.new("Darren", "TA Manager", 78000, ned)
+david = Employee.new("David", "TA", 10000, darren)
+shawna = Employee.new("Shawna", "TA", 12000, darren)
+p darren.bonus(5)
