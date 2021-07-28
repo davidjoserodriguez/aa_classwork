@@ -1,3 +1,5 @@
+require "singleton"
+
 class Piece
   def initialize(color, board, pos)
     @color = color
@@ -5,4 +7,11 @@ class Piece
     @pos = pos
   end
 
+
+end
+
+class NullPiece < Piece 
+include Singleton
+  def initialize
+  end
 end
