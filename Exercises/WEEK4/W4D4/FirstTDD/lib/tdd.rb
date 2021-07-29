@@ -88,10 +88,12 @@ class Tower
     end
 
     def play
+
         until won?
             p @polls
             puts "Please enter a position in the format #{0} #{1} "
             pos = gets.chomp
+            break if pos == "exit"
             #"0 2"
             positions = pos.split(" ")
             #["0","2"]

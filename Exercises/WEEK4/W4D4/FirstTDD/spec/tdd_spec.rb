@@ -80,12 +80,12 @@ describe "Towers" do
         end
     end
 
-    describe "#play" do
-        context "keep playing until won" do
-            it "should recieve a valid position" do
+    # describe "#play" do
+    #     context "keep playing until won" do
+    #         it "should recieve a valid position" do
                 
-            end
-        end
-    end
+    #         end
+    #     end
+    # end
 end
 
