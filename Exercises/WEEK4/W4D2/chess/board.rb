@@ -27,6 +27,7 @@ class Board
   def move_piece(start_pos, end_pos)
     start_piece = self[start_pos]
     end_piece = self[end_pos]
+    raise "No piece there can't start" if start_piece == NullPiece.instance
 
     if end_piece == NullPiece.instance
       self[end_pos] = start_piece
@@ -50,9 +51,9 @@ class Board
     end
       # begin
     #   raise "Error, there is no piece at that position" if self[start_pos] == NullPiece.instance
-    
 
-    #   raise "Error, cannot move to position - already taken" if self[end_pos] == 'x' 
+
+    #   raise "Error, cannot move to position - already taken" if self[end_pos] == 'x'
 
   end
 
