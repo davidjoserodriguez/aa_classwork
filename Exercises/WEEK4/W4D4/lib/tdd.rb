@@ -54,5 +54,30 @@ def stock_picker(arr)
     biggestArray
 end
 
+class Tower
+    attr_reader :polls
+    attr_writer :polls
+    
+    def initialize
+        @polls = [[1,2,3], [], []]
+        # @won = false
+    end
+
+    def won?
+        @polls == [[],[],[1,2,3]]
+    end
+
+    def move(pos1, pos2)
+        val = @polls[pos1].shift
+        if  @polls[pos2].empty? || val < @polls[pos2][0]
+            @polls[pos2].unshift(val)
+        else
+            @polls[pos1].unshift(val)
+        end
+        @polls
+    end
+
+end
+
 
 #
