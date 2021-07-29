@@ -26,9 +26,18 @@ end
 # (0...2).each do i
 #  (0..3)
 
-
 def my_transpose(arr)
-    arr.transpose
+    return false if arr.any?{ |row| row.length != arr[0].length}
+   
+    array = []
+    (0...arr.length).each do |row|
+        insideArray = []
+        (0...arr.length).each do |col|
+            insideArray << arr[col][row]
+        end
+        array << insideArray
+    end
+    array
 end
 
 #[5,2,7,6,10]
@@ -73,11 +82,26 @@ class Tower
             @polls[pos2].unshift(val)
         else
             @polls[pos1].unshift(val)
+            puts "That was an invalid move"
         end
         @polls
     end
 
+    def play
+        until won?
+            p @polls
+            puts "Please enter a position in the format #{0} #{1} "
+            pos = gets.chomp
+            #"0 2"
+            positions = pos.split(" ")
+            #["0","2"]
+            move(positions[0].to_i,positions[1].to_i)
+        end
+        puts "Game is over!! Congrats"
+    end
 end
 
+t = Tower.new
 
-#
+t.play
+
