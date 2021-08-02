@@ -26,17 +26,17 @@ end
 class Hash
   # This returns 0 because rspec will break if it returns nil
   # Make sure to implement an actual Hash#hash method
-  def hash
-    alpha_bet = ("a".."z").to_a + ("A".."Z").to_a
-    alpha_symbol = (:a..:z).to_a + (:A..:Z).to_a
-    total = 0
-    i = 0
-    self.each do |k,v|
-      i += 1
-      # p "k:#{k} // v:#{v} // i:#{i}"
-      total += (alpha_symbol.index(k) + (alpha_bet.index(v))) # nil error somewhere?
-    end
-    return total.hash
+  # def hash
+  #   alpha_bet = ("a".."z").to_a + ("A".."Z").to_a
+  #   alpha_symbol = (:a..:z).to_a + (:A..:Z).to_a
+  #   total = 0
+  #   i = 0
+  #   self.each do |k,v|
+  #     i += 1
+  #     # p "k:#{k} // v:#{v} // i:#{i}"
+  #     total += (alpha_symbol.index(k) + (alpha_bet.index(v))) # nil error somewhere?
+  #   end
+  #   return total.hash
 
-  end
+  # end
 end
