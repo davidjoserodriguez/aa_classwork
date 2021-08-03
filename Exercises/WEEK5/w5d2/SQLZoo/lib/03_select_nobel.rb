@@ -91,7 +91,7 @@ def presidential_prizes
   FROM
     nobels
   WHERE
-    winner = 'Theodore Roosevelt' OR winner = 'Woodrow Wilson' OR winner = 'Jimmy Carter'
+    winner IN ('Theodore Roosevelt' , 'Woodrow Wilson' ,'Jimmy Carter')
   SQL
 end
 
