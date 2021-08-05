@@ -1,10 +1,10 @@
 PRAGMA foreign_keys = ON;
 
-DROP TABLE IF EXISTS question_likes
-DROP TABLE IF EXISTS replies
-DROP TABLE IF EXISTS questions_follows
-DROP TABLE IF EXISTS questions
-DROP TABLE IF EXISTS users
+DROP TABLE IF EXISTS question_likes;
+DROP TABLE IF EXISTS replies;
+DROP TABLE IF EXISTS questions_follows;
+DROP TABLE IF EXISTS questions;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     id INTEGER PRIMARY KEY,
@@ -41,12 +41,12 @@ VALUES
   (1, 'TA Question', 'How do I write a SQL Database?', 1);
 
 INSERT INTO
-  questions (id, title, body)
+  questions (id, title, body, associated_author_id)
 VALUES
   (2, 'Cooking Question', 'How to boil water?', 3);
 
 INSERT INTO
-  questions (id, title, body)
+  questions (id, title, body, associated_author_id)
 VALUES
   (3, 'Life Question', 'Socks?', 2);
 
@@ -110,14 +110,6 @@ CREATE TABLE question_likes (
     FOREIGN KEY (question_id) REFERENCES questions(id)
 );
 
-INSERT INTO
-  question_likes (id, user_id, question_id)
-VALUES
-  (1,1,1);
-INSERT INTO
-  question_likes (id, user_id, question_id)
-VALUES
-  (1,1,1);
 INSERT INTO
   question_likes (id, user_id, question_id)
 VALUES
